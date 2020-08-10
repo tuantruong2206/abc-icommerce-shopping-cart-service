@@ -7,7 +7,6 @@ import au.com.nab.icommerce.cart.domain.model.Basket;
 import au.com.nab.icommerce.cart.domain.model.BasketDetail;
 import au.com.nab.icommerce.cart.domain.repository.BasketDetailRepository;
 import au.com.nab.icommerce.cart.domain.repository.BasketRepository;
-import au.com.nab.icommerce.cart.dto.BasketDTO;
 import au.com.nab.icommerce.cart.dto.BasketDetailDTO;
 import au.com.nab.icommerce.cart.dto.ProductDTO;
 import au.com.nab.icommerce.cart.dto.mapper.BasketDetailMapper;
@@ -20,7 +19,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -93,19 +91,6 @@ public class BasketDetailServiceImpl implements BasketDetailService {
         }
         throw new NABException(MessageCodeEnum.COMMON_ERROR_001, HttpStatus.BAD_REQUEST);
     }
-
-    /*@Override
-    public BasketDTO updateBasket(BasketDTO basketDTO) {
-        //skip validate basket ID
-        Basket basket = this.basketRepository.getOne(basketDTO.getId());
-        if (Objects.isNull(basket)) {
-            //TODO need to update detail error code
-            throw new NABException(MessageCodeEnum.COMMON_ERROR_001, HttpStatus.BAD_REQUEST);
-        }
-        Basket.updateBasket(basket, basketDTO);
-        Basket result = this.basketRepository.save(this.basketMapper.toEntity(basketDTO));
-        return this.basketMapper.toDto(result);
-    }*/
 
     @Override
     public void deleteBasketDetail(Long id) {

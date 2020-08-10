@@ -71,7 +71,7 @@ public class BasketController {
     @PostMapping("/basket")
     public ResponseEntity<JsonResponse<BasketDTO>> createBasketItem(@Valid @RequestBody BasketDTO basketDTO, BindingResult bindingResult) throws URISyntaxException {
         //TODO need Basket Validator here
-        log.info("REST request to update basket: {}", basketDTO);
+        log.info("REST request to create basket: {}", basketDTO);
         basketDTO = this.basketService.createBasket(basketDTO.getUserid());
         return ResponseEntity.created(new URI("/inventory/product/" + basketDTO.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, basketDTO.getId().toString()))
